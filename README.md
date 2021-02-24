@@ -36,9 +36,9 @@ Journey :
         
         e) Column "Transmission" contains following values : {"Manual Car","Automatic Car"}, used **ONE-HOT_ENCODING** for converting this catagorical column into numerical column .
         
-        h) now there  is no null values and all data is in integer datatype.
+        f) now there  is no null values and all data is in integer datatype.
         
-        i) Now we can build machine learning models .
+        g) Now we can build machine learning models .
         
         
 
