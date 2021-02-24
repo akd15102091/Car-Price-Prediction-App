@@ -17,31 +17,24 @@ Some Glimpses of Application :
 Journey : 
 
 **1) Data Collection** :  Data collected from the Kaggle . 
-    **about data** : Data Columns are : Airline ,Date_of_journey, Source, Destination, Route , Dep_Time, Arrival_Time, Duration, Total_Stop, Additional_info,Price . 
+
+    **about data** : Data Columns are : Car_Name ,Year, Selling_Price, Kms_driven, Fuel_type , Seller_type, Transmission, Owner, Present_price. . 
     
-    As a data scientist, we will predict the total predicted Fare for flight when user give some input .(input : Departure_Date, Arrival_Date, Source, Destination, number_of_stops and airline_type .)
-    
+    As a data scientist, we will predict the selling price for cars when user give some required input .
     
 **2) Data Preprocessing :** 
-        The major thing in this project is "Data Preprocessing "  ,because there are all columns(except- Price) of categorical-type and some are string but actually they are "Date" type columns .
+
+        Data Preprocessing always is a great step to build Machine-Learning-Models .
         
-        a)Date_of_Journey is a object data type, Therefore, we have to convert this datatype into timestamp so as to use this column properly for prediction. we use datetime and fetch day and month and made two seperate columns named as "Journey_day" and "Journey_month" and deleted "Date of journey" column.
+        a) first of all , deleted "Car_Name" column, because there is no need for price predction .
         
-        b) Similar to Date_of_Journey we  extracted values(hour and minutes) from "Dep_Time" using DateTime and made two seperate column names as "Dep_hour" and        "Dep_min" and deleted "Dep_Time" colimn.
+        b) Year : this tells that when actually car was bought from showroom. So we can make a useful feature for price prediction. so make a new column named as "no_year" (number of years = current year - given year) and then deleted "Year" column. 
         
-        c) Similar to Date_of_Journey we  extracted values(hour and minutes) from "Arrival_Time" using DateTime and made two seperate column names as "Arrival_hour" and "Arrival_min" and deleted "Arrival_Time" colimn.
+        c) Column "Fuel_type" contains following values : {"Petrol","Diesel","CNG"}, used **ONE-HOT_ENCODING** for converting this catagorical column into numerical column .
         
-        d) In "Duration" column there are values like: 2hr 50min , 40 min .... So from there values extract hours and minutes seperately and made two columns "Duration_hour" and "Duration_min"  and deleted "Duration" column.
+        d) Column "Seller_type" contains following values : {"Dealer","Individual"}, used **ONE-HOT_ENCODING** for converting this catagorical column into numerical column .
         
-        e) Then we have Source and Destination two columns . The values(places) have no impact on price ,so used **ONE-HOT-ENCODING** .
-        
-        f) There is one column named as "Airline" . for this used **ONE-HOT-ENCODING** .
-        
-        g) then deleted the "Route" and "Additional_info" columns.(Additional_info" has mostly 80% no-info data) .
-        
-        h) There is  one columns named as  "total_stop". values are : non-stop,1 stop, 2 stop, 3 stops, 4 stops. According to data, which has more number of stops that has more fare(price) . SO used **ORDINAL-ENCODING** . 
-        
-        g) then combine all these data and remove non-required columns .
+        e) Column "Transmission" contains following values : {"Manual Car","Automatic Car"}, used **ONE-HOT_ENCODING** for converting this catagorical column into numerical column .
         
         h) now there  is no null values and all data is in integer datatype.
         
@@ -52,7 +45,7 @@ Journey :
     
 **3) Model building** : 
 
-    a) split the dataset into X(independent features) and y(dependent features) .
+    a) split the dataset into X(independent features) and y(dependent features : "Present_Price" column) .
     
     b) perform train_test_split .
     
@@ -64,6 +57,6 @@ Journey :
 
     a) using flask framework , we deployed this model on HEROKU platform .
     
-App link :  https://flight-price-predction-ml-app.herokuapp.com/
+App link :  https://car-price-prediction-akd-app.herokuapp.com/
     
     
